@@ -1,0 +1,1 @@
+export { Labubu } from './Labubu';
