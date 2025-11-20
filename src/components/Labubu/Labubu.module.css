@@ -1,9 +1,60 @@
-.labubu {
-  border-radius: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+/* ... Keep container, anchor, chainLink same as before ... */
+.container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: visible;
+  background-color: transparent;
 }
 
-.labubu:hover {
-  transform: scale(1.1);
+.anchor {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: #333;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.chainLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.rectangleWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  cursor: grab;
+  z-index: 20;
+  /* Ensure the visual center is the transform origin */
+  transform-origin: center center; 
+}
+
+.rectangleWrapper:active {
+  cursor: grabbing;
+}
+
+/* NEW: The little ring on top */
+.hook {
+  position: absolute;
+  top: -6px; /* Sits right on the top edge */
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border: 3px solid #444;
+  border-radius: 50%;
+  transform: translate(-50%, -50%); /* Centers it horizontally */
+  background: transparent;
+  z-index: -1; /* Behind the box, or remove z-index to put on top */
 }

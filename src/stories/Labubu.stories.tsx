@@ -5,23 +5,30 @@ const meta: Meta<typeof Labubu> = {
   title: 'Charms/Labubu',
   component: Labubu,
   tags: ['autodocs'],
+  parameters: {
+    layout: 'centered',
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof Labubu>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    anchorPosition: { x: 200, y: 50 },
+  },
 };
 
-export const Large: Story = {
+export const LongString: Story = {
   args: {
-    size: 80,
+    stringLength: 150,
+    anchorPosition: { x: 200, y: 50 },
   },
 };
 
 export const CustomColor: Story = {
   args: {
     color: '#6B9DFF',
+    anchorPosition: { x: 200, y: 50 },
   },
 };
