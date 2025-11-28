@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef, type FC } from 'react';
 import { 
   motion, 
   useMotionValue, 
@@ -10,25 +10,16 @@ import {
 } from 'motion/react';
 import styles from './Lafufu.module.css';
 import { LafufuFigure } from './LafufuFigure';
+import { type LafufuProps, LAFUFU_SIZE_CONFIG } from './Lafufu.types';
 
-interface LafufuProps {
-  size?: 'small' | 'medium' | 'large';
-  string?: {length?: number, chainLinks?: number, color?: string};
-  color?: string;
-}
+const ANCHOR_SIZE = 16;
 
-const SIZE_CONFIG = {
-  small: { width: 55, height: 95, stringLength: 70, chainLinks: 10, overlap: 20 },
-  medium: { width: 85, height: 145, stringLength: 110, chainLinks: 16, overlap: 30 },
-  large: { width: 120, height: 205, stringLength: 160, chainLinks: 22, overlap: 42 },
-};
-
-export const Lafufu: React.FC<LafufuProps> = ({ 
+export const Lafufu: FC<LafufuProps> = ({ 
   size = 'medium',
   string: { length: customStringLength, chainLinks: customChainLinks, color: customStringColor } = {},
   color = '#E8E5DC',
 }) => {
-  const config = SIZE_CONFIG[size];
+  const config = LAFUFU_SIZE_CONFIG[size];
   const width = config.width;
   const height = config.height;
   const stringLength = customStringLength ?? config.stringLength;
@@ -37,7 +28,8 @@ export const Lafufu: React.FC<LafufuProps> = ({
 
   const CHAIN_VISUAL_OVERLAP = config.overlap;
 
-  const anchorPosition = { x: 0, y: 0 };
+  // Anchor point is at the center of the anchor element
+  const anchorPosition = { x: ANCHOR_SIZE / 2, y: ANCHOR_SIZE / 2 };
   
   const containerRef = useRef<HTMLDivElement>(null);
   const chainRefs = useRef<(HTMLDivElement | null)[]>([]);

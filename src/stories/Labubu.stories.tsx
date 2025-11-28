@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Lafufu } from '../components';
+import { useState } from 'react';
 
 const meta: Meta<typeof Lafufu> = {
   title: 'Charms/Lafufu',
@@ -23,21 +24,55 @@ export const Default: Story = {
 export const Sizes: Story = {
   render: () => (
     <div style={{ display: 'flex', gap: '5rem', padding: '2rem', height: '30rem' }}>
-        <Lafufu size="small" />
-      
-        <Lafufu size="medium" />
-  
-        <Lafufu size="large" />
-     
+      <div style={{ position: 'relative', height: 'fit-content', border: '1px solid #ccc', padding: '1rem', borderRadius: '8px' }}>
+        <span style={{ fontSize: '16px', fontWeight: 'bold' }}>Small</span>
+        <div style={{ position: 'absolute', right: 0, bottom: 0}}>
+          <Lafufu size="small" />
+        </div>
+      </div>
+      <div style={{ position: 'relative',  height: 'fit-content', border: '1px solid #ccc', padding: '1rem', borderRadius: '8px' }}>
+        <span style={{ fontSize: '16px', fontWeight: 'bold' }}>Medium</span>
+        <div style={{ position: 'absolute', right: 0, bottom: 0}}>
+          <Lafufu size="medium" />
+        </div>
+      </div>
+      <div style={{ position: 'relative',  height: 'fit-content', border: '1px solid #ccc', padding: '1rem', borderRadius: '8px' }}>
+        <span style={{ fontSize: '16px', fontWeight: 'bold' }}>Large</span>
+        <div style={{ position: 'absolute', right: 0, bottom: 0}}>
+          <Lafufu size="large" />
+        </div>
+      </div> 
     </div>
   ),
 };
 
 export const CustomColor: Story = {
-  args: {
-    color: '#FFB6C1', 
+ render: () => {
+    const [color, setColor] = useState('#FFB6C1');
+    
+    return (
+      <div style={{ display: 'flex', gap: '2rem', height: '20rem' }}>
+          <Lafufu color={color} />
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <label style={{ fontSize: '16px', fontWeight: 'bold' }}>Color</label>
+          <input
+            type="color"
+            value={color}
+            onChange={(e) => setColor(e.target.value)}
+            style={{
+              width: '4rem',
+              height: '2rem',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+            }}
+          />
+          <span style={{ fontSize: '0.75rem', color: '#666' }}>{color}</span>
+        </div>
+      </div>
+    );
   },
-  render: (args) => <div style={{ width: '20rem', height: '20rem' }}><Lafufu {...args} /></div>,
 };
 
 export const CustomString: Story = {
