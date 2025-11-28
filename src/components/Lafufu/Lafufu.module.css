@@ -1,0 +1,42 @@
+.container {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+.anchor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.chainLink {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.figure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: grab;
+  z-index: 9999;
+  transform-origin: center center;
+}
+
+.figure:active {
+  cursor: grabbing;
+}
